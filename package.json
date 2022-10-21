@@ -1,0 +1,36 @@
+{
+  "name": "latihan1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "make-seed-users": "npx sequelize-cli seed:generate --name demo-user",
+    "make-seed-cars": "npx sequelize-cli seed:generate --name demo-cars",
+    "model-users": "npx sequelize-cli model:generate --name Users --attributes name:string,email:string,password:string,role:string,access_token:text,refresh_token:text",
+    "model-cars": "npx sequelize-cli model:generate --name Cars --attributes name:string,price:string,size:string,available:boolean,createdBy:string,updatedBy:string,deletedBy:string",
+    "model-deletecars": "npx sequelize-cli model:generate --name DeleteCars --attributes name:string,price:string,size:string,available:boolean,createdBy:string,updatedBy:string,deletedBy:string",
+    "seed": "npx sequelize-cli db:seed:all",
+    "migrate": "npx sequelize-cli db:migrate",
+    "db:undo": "npx sequelize-cli db:migrate:undo:all",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.25.1",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "description": ""
+}

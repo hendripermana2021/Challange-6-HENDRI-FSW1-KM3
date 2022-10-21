@@ -1,0 +1,614 @@
+openapi: 3.0.0
+info:
+  title: Challange6-Hendri-Permana-Putra-FSW1
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:8000/v1/api/
+  variables: {}
+paths:
+
+### Limit ####
+  /register:
+    post:
+      tags:
+      - Challange-6
+      summary: REGISTER USER
+      operationId: REGISTERUSER
+      parameters: []
+      requestBody:
+        description: 'This Form just for register MEMBER USER'
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LOGINUSERSREQUEST'
+              - example:
+                  name : Hendri Permana Putra
+                  email: hendri123436@gmail.com
+                  password: '123456'
+                  confPassword : '123456'
+            example:
+              name : Hendri Permana Putra
+              email: hendri123436@gmail.com
+              password: '123456'
+              confPassword : '123456'
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+
+### Limit ####
+  /member/login:
+    post:
+      tags:
+      - Challange-6
+      summary: LOGIN MEMBER USERS
+      operationId: LOGINMEMBERUSERS
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LOGINUSERSREQUEST'
+              - example:
+                  email: hendri123456@gmail.com
+                  password: '123456'
+            example:
+              email: superadmin@gmail.com
+              password: '123456'
+              email1: admin@gmail.com
+              password1: '123456'
+              email2: member@gmail.com
+              password2: '123456'
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+### Limit ####
+  /admin/login:
+    post:
+      tags:
+      - Challange-6
+      summary: LOGIN ADMIN USERS
+      operationId: LOGINADMINUSERS
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LOGINUSERSREQUEST'
+              - example:
+                  email: hendri123456@gmail.com
+                  password: '123456'
+            example:
+              email: superadmin@gmail.com
+              password: '123456'
+              email1: admin@gmail.com
+              password1: '123456'
+              email2: member@gmail.com
+              password2: '123456'
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+### Limit ####
+  /superadmin/login:
+    post:
+      tags:
+      - Challange-6
+      summary: LOGIN SUPERADMIN USERS
+      operationId: LOGINSUPERADMINUSERS
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LOGINUSERSREQUEST'
+              - example:
+                  email: hendri123456@gmail.com
+                  password: '123456'
+            example:
+              email: superadmin@gmail.com
+              password: '123456'
+              email1: admin@gmail.com
+              password1: '123456'
+              email2: member@gmail.com
+              password2: '123456'
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+
+
+### Limit ####
+  /whoami:
+    get:
+      tags:
+      - Challange-6
+      summary: GET WHOAMI
+      operationId: GETWHOAMI
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+
+### LIMIT ####
+  /users/edit/{id}:
+    put:
+      tags:
+      - Challange-6
+      summary: PUT USERS
+      operationId: PUTUSERS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      requestBody:
+        content:
+          application/json:
+            encoding: {}
+            schema:
+              required:
+                - name
+                - email
+                - password
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hendri Permana Putra
+                email:
+                  type: string
+                  example: sukasuka@gmail.com
+                password:
+                  type: string
+                  example: 123456
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+### Limit ####
+  /users:
+    get:
+      tags:
+      - Challange-6
+      summary: GET ALL USERS
+      operationId: GETALLUSERS
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+### LIMIT ####
+  /users/{id}:
+    get:
+      tags:
+        - Challange-6
+      summary: GET USERS BY ID
+      operationId: GETUSERSBYID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+### LIMIT ####
+  /registrasi-admin:
+    post:
+      tags:
+      - Challange-6
+      summary: ADMIN ADD
+      operationId: ADMINADD
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ADMINADDREQUEST'
+              - example:
+                  name: Hendri Permana
+                  email: admin@gmail.com
+                  password: '123456'
+                  confPassword: '123456'
+            example:
+              name: Hendri Permana
+              email: admin@gmail.com
+              password: '123456'
+              confPassword: '123456'
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+### LIMIT ####
+  /users/delete/{id}:
+    delete:
+      tags:
+        - Challange-6
+      summary: DELETE USERS
+      operationId: DELETEUSERS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      
+
+### Limit ####
+  /logout:
+    delete:
+      tags:
+      - Challange-6
+      summary: LOGOUT USERS
+      operationId: LOGOUTUSERS
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:8000/v1/api/
+        variables: {}
+
+### Limit ####
+  /cars:
+    get:
+      tags:
+      - Challange-6
+      summary: GET ALL CARS
+      operationId: GETALLCARS
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:8000/v1/api
+        variables: {}
+
+### LIMIT ####
+  /cars/{id}:
+    get:
+      tags:
+        - Challange-6
+      summary: GET CARS BY ID
+      operationId: GETCARSBYID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+### Limit ####
+  /create/cars:      
+    post:
+      tags:
+      - Challange-6
+      summary: CREATE CARS
+      operationId: CREATECARS
+      Parameters: []
+      requestBody:
+        content:
+          application/json:
+            encoding: {}
+            schema:
+              required:
+                - name
+                - price
+                - size
+                - available
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Kijang Innova
+                price:
+                  type: string
+                  example: 2000000
+                size:
+                  type: string
+                  example: large
+                available:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:8000/v1/api
+        variables: {}
+
+### Limit ####
+  /cars/edit/{id}:
+    put:
+      tags:
+      - Challange-6
+      summary: EDIT CARS
+      operationId: EDITCARS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      requestBody:
+        content:
+          application/json:
+            encoding: {}
+            schema:
+              required:
+                - name
+                - price
+                - size
+                - available
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Land Rover Sport
+                price:
+                  type: string
+                  example: 5000000
+                size:
+                  type: string
+                  example: large
+                available:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+### LIMIT ####
+  /cars/delete/{id}:
+    put:
+      tags:
+      - Challange-6
+      summary: DELETE CARS TO LIST HAS BEEN DELETED
+      operationId: DELETECARS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+### LIMIT ####
+  /cars/list-delete/{id}:
+    delete:
+      tags:
+        - Challange-6
+      summary: DELETE CARS
+      operationId: DELETECARS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+
+components:
+  schemas:
+    LOGINUSERSREQUEST:
+      title: LOGINUSERSREQUEST
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: hendri123456@gmail.com
+        password: '123456'
+    ADMINADDREQUEST:
+      title: ADMINADDREQUEST
+      required:
+      - name
+      - email
+      - password
+      - confPassword
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        confPassword:
+          type: string
+      example:
+        name: Hendri Permana
+        email: admin@gmail.com
+        password: '123456'
+        confPassword: '123456'
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Challange-6
+  description: ''
