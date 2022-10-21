@@ -47,4 +47,4 @@ DELETE localhost:8000/v1/api/cars/list-delete/:id DELETE CARS ONLY (avalaible ==
 ```
 
 
-HAVE A NICE ONE DAY, THANKS FOR ATTENTION
+HAVE A NICE DAY, THANKS FOR ATTENTION
